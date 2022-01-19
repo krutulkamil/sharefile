@@ -1,6 +1,8 @@
+const plugin = require('tailwindcss/plugin')
+
 module.exports = {
-  purge: ["./src/**/*.{ts,tsx}"],
-  darkMode: false, // or 'media' or 'class'
+  content: ["./src/**/*.{ts,tsx}"],
+  media: false,
   theme: {
     extend: {
       colors: {
@@ -13,5 +15,7 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    plugin(function({ addUtilities, addComponents, e, prefix, config }) {}),
+  ],
 };
