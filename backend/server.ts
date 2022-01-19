@@ -1,9 +1,12 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
+import connectMongoDB from "./config/db";
 
 const app = express();
 dotenv.config();
+
+connectMongoDB();
 
 app.use(cors());
 
