@@ -45,7 +45,10 @@ router.post("/upload", upload.single("myFile"), async (req, res) => {
             format
         })
 
-        res.status(200).json(file);
+        res.status(200).json({
+            id: file._id,
+            downloadPageLink: `${process.env.API_BASE_ENDPOINT_CLIENT}download/${file._id}`
+        });
 
     } catch (error) {
         console.log((error as Error).message);
