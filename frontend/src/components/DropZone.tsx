@@ -1,15 +1,19 @@
-import {useCallback} from 'react';
+import {useCallback, FunctionComponent, Dispatch} from 'react';
 import {useDropzone} from 'react-dropzone';
 
-const DropZone = () => {
+const DropZone: FunctionComponent<{ setFile: Dispatch<any> }> = ({setFile}) => {
     const onDrop = useCallback(acceptedFiles => {
         console.log(acceptedFiles);
+        setFile(acceptedFiles[0]);
     }, []);
+
+    const MAX_SIZE = 10485760; // 10mb max size
 
     const {getRootProps, getInputProps, isDragAccept, isDragReject} = useDropzone({
         onDrop,
         multiple: false,
         accept: "image/jpg, image/jpeg, image/bmp, image/png, image/gif, application/pdf, audio/mpeg, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingm, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation, text/plain, text/csv",
+        maxSize: MAX_SIZE
     });
 
     return (
@@ -27,10 +31,11 @@ const DropZone = () => {
                     {isDragReject ? (
                         <p>Sorry, we aren't supporting this file</p>
                     ) : (
-                        <div>
+                        <>
                             <p>Drag & Drop Files Here</p>
                             <p className="mt-2 text-base text-gray-300">Images, Word/txt/csv and mp3 files supported</p>
-                        </div>
+                            <p className="mt-2 text-base text-gray-400">Max size: 10mb</p>
+                        </>
                     )}
                 </div>
 
