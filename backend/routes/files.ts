@@ -2,6 +2,7 @@ import express from "express";
 import multer from "multer";
 import {UploadApiResponse, v2 as cloudinary} from "cloudinary"
 import File from "../models/File";
+import https from "https"
 
 const router = express.Router();
 
@@ -76,6 +77,28 @@ router.get("/:id", async (req, res) => {
             format,
             id
         });
+
+    } catch (error) {
+        console.log((error as Error).message);
+        return res.status(500).json({
+            message: "Server Error"
+        });
+    }
+});
+
+router.get("/:id/download", async (req, res) => {
+    try {
+        const id = req.params.id;
+        const file = await File.findById(id);
+        if (!file) {
+            return res.status(404).json({
+                message: "File does not exist"
+            })
+        }
+
+        // get file -> and download
+        https.get(file.secure_url, (fileStream) => fileStream.pipe(res));
+
 
     } catch (error) {
         console.log((error as Error).message);

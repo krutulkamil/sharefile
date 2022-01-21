@@ -2,10 +2,20 @@ import {GetServerSidePropsContext, NextPage} from "next";
 import RenderFile from "@components/RenderFile";
 import { IFile } from "libs/types";
 import axios from "axios";
+import fileDownload from "js-file-download";
 
 const DownloadPage: NextPage<{
     file: IFile;
 }> = ({file: {format, name, sizeInBytes, id}}) => {
+
+    const handleDownload = async () => {
+        const {data} = await axios.get(`${process.env.NEXT_PUBLIC_API_SERVER}api/files/${id}/download`, {
+            responseType: "blob"
+        });
+
+        fileDownload(data, name);
+    };
+
     return (
         <div className="flex flex-col items-center justify-center py-3 space-y-4 bg-gray-800 rounded-md shadow-xl w-96">
 
@@ -20,7 +30,7 @@ const DownloadPage: NextPage<{
                     />
                     <h1 className="text-xl">You file is ready to be downloaded</h1>
                     <RenderFile file={{format, name, sizeInBytes}} />
-                    <button className="button">Download</button>
+                    <button className="button" onClick={handleDownload}>Download</button>
                 </>
             )}
 
