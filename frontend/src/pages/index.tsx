@@ -33,6 +33,11 @@ export default function Home() {
         }
     };
 
+    const resetComponent = () => {
+        setFile(null);
+        setDownloadPageLink(null);
+    };
+
     return (
         <div className="flex flex-col items-center justify-center">
             <h1 className="my-4 text-3xl font-medium">Got a File? Share it!</h1>
@@ -62,7 +67,10 @@ export default function Home() {
                     <div className="p-2 text-center">
                         <DownloadFile downloadPageLink={downloadPageLink}/>
                         {/*Email Form*/}
-                        <button className="p-2 my-5 bg-gray-900 rounded-md w-44 focus:outline-none">
+                        <button
+                            className="p-2 my-5 bg-gray-900 rounded-md w-44 focus:outline-none"
+                            onClick={resetComponent}
+                        >
                             Upload New File
                         </button>
                     </div>
