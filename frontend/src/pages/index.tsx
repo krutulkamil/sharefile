@@ -1,10 +1,36 @@
 import {useState} from 'react';
+import axios from 'axios';
 import DropZone from "@components/DropZone";
 import RenderFile from "@components/RenderFile";
 
 export default function Home() {
     const [file, setFile] = useState(null);
-    console.log({file});
+    const [id, setId] = useState(null);
+    const [downloadPageLink, setDownloadPageLink] = useState(null);
+    const [uploadState, setUploadState] = useState<"Uploading" | "Upload Failed" | "Uploaded">(null)
+
+    const handleUpload = async () => {
+        if (uploadState === "Uploading") return;
+
+        const formData = new FormData();
+        formData.append("myFile", file);
+        try {
+            const {data} = await axios({
+                method: "POST",
+                data: formData,
+                url: "api/files/upload",
+                headers: {
+                    "Content-Type": "multipart/form-data"
+                }
+            });
+
+            setDownloadPageLink(data.downloadPageLink);
+            setId(data.id);
+        } catch (error) {
+            console.log(error.response.data);
+            setUploadState("Upload Failed");
+        }
+    };
 
     return (
         <div className="flex flex-col items-center justify-center">
@@ -20,8 +46,11 @@ export default function Home() {
                     }}
                     />
                 )}
-
                 {/*upload button*/}
+                <button
+                    className="p-2 my-5 bg-gray-900 rounded-md w-44 focus:outline-none"
+                    onClick={handleUpload}
+                >Upload</button>
             </div>
         </div>
     );

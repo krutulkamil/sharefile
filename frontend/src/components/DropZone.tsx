@@ -12,7 +12,7 @@ const DropZone: FunctionComponent<{ setFile: Dispatch<any> }> = ({setFile}) => {
     const {getRootProps, getInputProps, isDragAccept, isDragReject} = useDropzone({
         onDrop,
         multiple: false,
-        accept: "image/jpg, image/jpeg, image/bmp, image/png, image/gif, application/pdf, audio/mpeg, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingm, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation, text/plain, text/csv",
+        accept: "image/jpg, image/jpeg, image/bmp, image/png, image/gif, application/pdf, audio/mpeg",
         maxSize: MAX_SIZE
     });
 
@@ -33,7 +33,7 @@ const DropZone: FunctionComponent<{ setFile: Dispatch<any> }> = ({setFile}) => {
                     ) : (
                         <>
                             <p>Drag & Drop Files Here</p>
-                            <p className="mt-2 text-base text-gray-300">Images, Word/txt/csv and mp3 files supported</p>
+                            <p className="mt-2 text-base text-gray-300">Images, pdf and mp3 files supported</p>
                             <p className="mt-2 text-base text-gray-400">Max size: 10mb</p>
                         </>
                     )}
