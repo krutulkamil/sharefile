@@ -56,7 +56,7 @@ export default function Home() {
 
                 {!downloadPageLink && file && (
                         <button
-                            className="p-2 my-5 bg-gray-900 rounded-md w-44 focus:outline-none"
+                            className="button"
                             onClick={handleUpload}
                         >
                             {uploadState}
@@ -68,7 +68,7 @@ export default function Home() {
                         <DownloadFile downloadPageLink={downloadPageLink}/>
                         {/*Email Form*/}
                         <button
-                            className="p-2 my-5 bg-gray-900 rounded-md w-44 focus:outline-none"
+                            className="button"
                             onClick={resetComponent}
                         >
                             Upload New File
