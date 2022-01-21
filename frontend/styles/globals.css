@@ -8,4 +8,10 @@
   .button {
     @apply p-2 my-5 bg-gray-900 rounded-md w-44 focus:outline-none
   }
+  .form {
+    @apply flex flex-col items-center justify-center w-full p-2 space-y-3
+  }
+  .form-input {
+    @apply p-1 text-white bg-gray-800 border-2 focus:outline-none
+  }
 }
