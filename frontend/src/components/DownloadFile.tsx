@@ -1,9 +1,9 @@
 const DownloadFile = ({downloadPageLink}) => {
     return (
         <div className="p-1">
-            <h1 className="my-2 text-lg font-medium">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, quaerat?</h1>
+            <h1 className="my-2 text-lg font-medium">Your file is successfully uploaded!</h1>
             <div className="flex space-x-3">
-                <span className="break-all">{downloadPageLink}</span>
+                <span className="break-all text-blue-300 hover:text-blue-400 my-2">{downloadPageLink}</span>
                 <img
                     src="copy.png"
                     alt="copy file"

@@ -6,7 +6,7 @@
 
 @layer components{
   .button {
-    @apply p-2 my-5 bg-gray-900 rounded-md w-44 focus:outline-none
+    @apply p-2 my-5 bg-gray-900 rounded-full w-44 focus:outline-none
   }
   .form {
     @apply flex flex-col items-center justify-center w-full p-2 space-y-3

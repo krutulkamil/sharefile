@@ -4,14 +4,15 @@ import DropZone from "@components/DropZone";
 import RenderFile from "@components/RenderFile";
 import DownloadFile from "@components/DownloadFile";
 import EmailForm from "@components/EmailForm";
+import {NextPage} from "next";
 
-export default function Home() {
+const Home: NextPage = () => {
     const [file, setFile] = useState(null);
     const [id, setId] = useState(null);
     const [downloadPageLink, setDownloadPageLink] = useState(null);
     const [uploadState, setUploadState] = useState<"Uploading" | "Upload Failed" | "Uploaded" | "Upload">("Upload")
 
-    const handleUpload = async () => {
+    const handleUpload = async (): Promise<void> => {
         if (uploadState === "Uploading") return;
         setUploadState("Uploading");
         const formData = new FormData();
@@ -34,9 +35,10 @@ export default function Home() {
         }
     };
 
-    const resetComponent = () => {
+    const resetComponent = (): void => {
         setFile(null);
         setDownloadPageLink(null);
+        setUploadState("Upload");
     };
 
     return (
@@ -80,3 +82,5 @@ export default function Home() {
         </div>
     );
 }
+
+export default Home;

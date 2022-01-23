@@ -1,4 +1,4 @@
-import {FunctionComponent, useState} from "react";
+import {FormEvent, FormEventHandler, FunctionComponent, SyntheticEvent, useState} from "react";
 import axios from "axios";
 
 const EmailForm: FunctionComponent<{
@@ -8,7 +8,7 @@ const EmailForm: FunctionComponent<{
     const [emailTo, setEmailTo] = useState('');
     const [message, setMessage] = useState(null);
 
-    const handleEmail = async (e) => {
+    const handleEmail: FormEventHandler<HTMLFormElement> = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         try {
@@ -30,7 +30,7 @@ const EmailForm: FunctionComponent<{
 
     return (
         <div className="form">
-            <h3>You can also send a file through mail</h3>
+            <h3 className="text-green-300">You can also send a file through mail</h3>
             <form className="form" onSubmit={handleEmail}>
                 <input
                     className="form-input"
@@ -56,7 +56,7 @@ const EmailForm: FunctionComponent<{
                 </button>
             </form>
             {message && (
-                <p className="font-medium text-red-500">{message}</p>
+                <p className="font-medium text-green-500">{message}</p>
             )}
         </div>
     );
