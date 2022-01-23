@@ -27,7 +27,7 @@ const DropZone: FunctionComponent<{ setFile: Dispatch<any> }> = ({setFile}) => {
                         + (isDragAccept === true ? "border-green-500" : "")
                     }
                 >
-                    <img src="folder.png" alt="folder" className="h-16 w-16"/>
+                    <img src="folder.png" alt="folder" className="h-16 w-16 pointer-events-none"/>
                     {isDragReject ? (
                         <p>Sorry, we aren't supporting this file</p>
                     ) : (

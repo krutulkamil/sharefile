@@ -26,7 +26,7 @@ const DownloadPage: NextPage<{
                     <img
                         src="/images/file-download.png"
                         alt="File Download"
-                        className="w-16 h-16"
+                        className="w-16 h-16 pointer-events-none"
                     />
                     <h1 className="text-xl">You file is ready to be downloaded</h1>
                     <RenderFile file={{format, name, sizeInBytes}} />
