@@ -1,8 +1,13 @@
+// next
 import {GetServerSidePropsContext, NextPage} from "next";
-import RenderFile from "@components/RenderFile";
-import { IFile } from "libs/types";
+// axios
 import axios from "axios";
+// js-file-download
 import fileDownload from "js-file-download";
+// components
+import RenderFile from "@components/RenderFile";
+// types
+import { IFile } from "libs/types";
 
 interface PageProps {
     file: IFile;

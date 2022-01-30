@@ -1,5 +1,8 @@
+// react
 import {useCallback, FunctionComponent, Dispatch} from 'react';
+// react-dropzone
 import {useDropzone} from 'react-dropzone';
+// types
 import {IFileUpload} from "../../libs/types";
 
 const DropZone: FunctionComponent<{ setFile: Dispatch<IFileUpload> }> = ({setFile}): JSX.Element => {

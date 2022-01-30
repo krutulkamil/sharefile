@@ -1,10 +1,14 @@
+// react
 import {useState} from 'react';
+// next
+import {NextPage} from "next";
+// axios
 import axios from 'axios';
+// components
 import DropZone from "@components/DropZone";
 import RenderFile from "@components/RenderFile";
 import DownloadFile from "@components/DownloadFile";
 import EmailForm from "@components/EmailForm";
-import {NextPage} from "next";
 
 const Home: NextPage = (): JSX.Element => {
     const [file, setFile] = useState(null);

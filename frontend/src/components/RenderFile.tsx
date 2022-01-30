@@ -1,7 +1,10 @@
-import { IFile } from 'libs/types'
+// react
 import {FunctionComponent} from "react";
+// helper functions
 import {smartTrim} from "../../libs/smartTrim";
 import {sizeInMb} from "../../libs/sizeInMb";
+// types
+import { IFile } from 'libs/types'
 
 interface Props {
     file: IFile
