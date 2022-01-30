@@ -1,9 +1,9 @@
 import {useCallback, FunctionComponent, Dispatch} from 'react';
 import {useDropzone} from 'react-dropzone';
+import {IFileUpload} from "../../libs/types";
 
-const DropZone: FunctionComponent<{ setFile: Dispatch<any> }> = ({setFile}) => {
+const DropZone: FunctionComponent<{ setFile: Dispatch<IFileUpload> }> = ({setFile}): JSX.Element => {
     const onDrop = useCallback(acceptedFiles => {
-        console.log(acceptedFiles);
         setFile(acceptedFiles[0]);
     }, []);
 

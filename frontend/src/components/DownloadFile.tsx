@@ -1,4 +1,10 @@
-const DownloadFile = ({downloadPageLink}) => {
+import {FunctionComponent} from "react";
+
+interface Props {
+    downloadPageLink: string
+}
+
+const DownloadFile: FunctionComponent<Props> = ({downloadPageLink}) => {
     return (
         <div className="p-1">
             <h1 className="my-2 text-lg font-medium">Your file is successfully uploaded!</h1>

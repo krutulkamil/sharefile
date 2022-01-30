@@ -4,11 +4,13 @@ import { IFile } from "libs/types";
 import axios from "axios";
 import fileDownload from "js-file-download";
 
-const DownloadPage: NextPage<{
+interface PageProps {
     file: IFile;
-}> = ({file: {format, name, sizeInBytes, id}}) => {
+}
 
-    const handleDownload = async () => {
+const DownloadPage: NextPage<PageProps> = ({file: {format, name, sizeInBytes, id}}) => {
+
+    const handleDownload = async (): Promise<void> => {
         const {data} = await axios.get(`${process.env.NEXT_PUBLIC_API_SERVER}api/files/${id}/download`, {
             responseType: "blob"
         });
@@ -18,7 +20,6 @@ const DownloadPage: NextPage<{
 
     return (
         <div className="flex flex-col items-center justify-center py-3 space-y-4 bg-gray-800 rounded-md shadow-xl w-96">
-
             {!id ? (
                 <span>Ooops! File doesn't exist! Check the URL</span>
             ) : (
@@ -33,14 +34,13 @@ const DownloadPage: NextPage<{
                     <button className="button" onClick={handleDownload}>Download</button>
                 </>
             )}
-
         </div>
     );
 };
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
     const {id} = context.query;
-    let file;
+    let file: IFile | {};
 
     try {
         const {data} = await axios.get(`${process.env.NEXT_PUBLIC_API_SERVER}api/files/${id}`);

@@ -6,10 +6,10 @@ import DownloadFile from "@components/DownloadFile";
 import EmailForm from "@components/EmailForm";
 import {NextPage} from "next";
 
-const Home: NextPage = () => {
+const Home: NextPage = (): JSX.Element => {
     const [file, setFile] = useState(null);
     const [id, setId] = useState(null);
-    const [downloadPageLink, setDownloadPageLink] = useState(null);
+    const [downloadPageLink, setDownloadPageLink] = useState<string | null>(null);
     const [uploadState, setUploadState] = useState<"Uploading" | "Upload Failed" | "Uploaded" | "Upload">("Upload")
 
     const handleUpload = async (): Promise<void> => {

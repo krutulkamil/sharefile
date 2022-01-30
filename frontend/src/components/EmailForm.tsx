@@ -1,12 +1,14 @@
-import {FormEvent, FormEventHandler, FunctionComponent, SyntheticEvent, useState} from "react";
+import {FormEvent, FormEventHandler, FunctionComponent, useState} from "react";
 import axios from "axios";
 
-const EmailForm: FunctionComponent<{
-    id: string
-}> = ({id}) => {
-    const [emailFrom, setEmailFrom] = useState('');
-    const [emailTo, setEmailTo] = useState('');
-    const [message, setMessage] = useState(null);
+interface Props {
+    id: string;
+}
+
+const EmailForm: FunctionComponent<Props> = ({id}): JSX.Element => {
+    const [emailFrom, setEmailFrom] = useState<string>('');
+    const [emailTo, setEmailTo] = useState<string>('');
+    const [message, setMessage] = useState<string | null>(null);
 
     const handleEmail: FormEventHandler<HTMLFormElement> = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
