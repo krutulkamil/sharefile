@@ -14,8 +14,8 @@ const RenderFile: FunctionComponent<Props> = ({file: {format, sizeInBytes, name}
     return (
         <div className="flex items-center w-full p-4 my-2">
             <img src={`/images/${format}.png`} alt={name} className="w-14 h-14 pointer-events-none"/>
-            <span className="mx-2">{smartTrim(name, 20, " ", "(...)")}</span>
-            <span className="ml-auto">{sizeInMb(sizeInBytes)}</span>
+            <span className="text-sm sm:text-base mx-2">{smartTrim(name, 16, " ", "(...)")}</span>
+            <span className="text-sm sm:text-base ml-auto">{sizeInMb(sizeInBytes)}</span>
         </div>
     );
 };

@@ -34,7 +34,7 @@ const EmailForm: FunctionComponent<Props> = ({id}): JSX.Element => {
 
     return (
         <div className="form">
-            <h3 className="text-green-300">You can also send a file through mail</h3>
+            <h3 className="text-sm sm:text-base text-green-300">You can also send a file through mail</h3>
             <form className="form" onSubmit={handleEmail}>
                 <input
                     className="form-input"

@@ -36,8 +36,8 @@ const DropZone: FunctionComponent<{ setFile: Dispatch<IFileUpload> }> = ({setFil
                     ) : (
                         <>
                             <p>Drag & Drop Files Here</p>
-                            <p className="mt-2 text-base text-gray-300">Images, pdf and mp3 files supported</p>
-                            <p className="mt-2 text-base text-gray-400">Max size: 10mb</p>
+                            <p className="mt-2 text-sm sm:text-base text-gray-300">Images, pdf and mp3 files supported</p>
+                            <p className="mt-2 text-sm sm:text-base text-gray-400">Max size: 10mb</p>
                         </>
                     )}
                 </div>
